@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-1.12.4.js"></script>
+    <style>
+        h3 {
+            color: red;
+        }
+
+        p {
+            width: 470px;
+            height: auto;
+            background-color: rgb(240, 230, 255);
+            line-height: 20px;
+            padding: 10px 20px;
+            border: 1px solid mediumpurple;
+        }
+
+        u {
+            background-color: rgb(236, 230, 252);
+            color: midnightblue;
+        }
+
+        #test {
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid darkblue;
+            margin: 10px 0;
+        }
+
+        .aa {
+            background-color: lavender;
+        }
+
+        .bb {
+            color: darkblue;
+        }
+
+        .cc {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrapper {
+            margin-top: 20px;
+        }
+
+        .tab {
+            border: 1px solid #ddd;
+            border-bottom: 0;
+            height: 36px;
+            width: 320px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tab-item:hover {
+            background-color: white;
+            border-color: white;
+        }
+
+        .tab li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 33px;
+            line-height: 33px;
+            text-align: center;
+            cursor: pointer;
+            border-top: 4px solid lavender;
+            border-bottom: 1px solid #ccc;
+            background-color: lavender;
+        }
+
+        .tab span {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            background: lavender;
+            width: 1px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        .products {
+            width: 501px;
+            border: 1px solid lavender;
+            height: 238px;
+        }
+
+        .products .main {
+            float: left;
+            display: none;
+        }
+
+        .products .main.selected {
+            display: block;
+        }
+
+        .products img {
+            width: 501px;
+            height: 238px;
+        }
+
+        .tab li.active {
+            border-color: darkblue;
+            background-color: white;
+            border-bottom: 0;
+        }
+
+        #tag {
+            width: 100px;
+        }
+
+        #box {
+            color: midnightblue;
+            background-color: lavender;
+            border: 1px solid darkblue;
+            width: 480px;
+            height: 400px;
+            text-align: center;
+        }
+
+        #box a {
+            color: rebeccapurple;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #box ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box li {
+            float: left;
+            padding: 1em;
+            list-style: none;
+        }
+
+        #imagegallery {
+            list-style: none;
+        }
+
+        #imagegallery li {
+            margin: 10px;
+            padding: 0px;
+            display: inline;
+        }
+
+        #imagegallery li a img {
+            border: 0;
+        }
+
+        #image {
+            padding: 0 10px;
+            width: 460px;
+        }
+
+        #box3 {
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        #box3 table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid rebeccapurple;
+            width: 300px;
+        }
+
+        #box3 th,
+        #box3 td {
+            border: 1px solid lavender;
+            color: #404060;
+            padding: 10px;
+        }
+
+        #box3 th {
+            background-color: mediumpurple;
+            color: #fff;
+        }
+
+        #box3 tbody tr {
+            background-color: lavender;
+            text-align: center;
+        }
+
+        #box3 tbody tr:hover {
+            cursor: pointer;
+            background-color: #fff;
+        }
+
+        #move {
+            background-color: slateblue;
+            height: 100px;
+            width: 100px;
+        }
+
+        #box4 {
+            height: 140px;
+        }
+
+        #box5 {
+            margin-top: 20px;
+        }
+
+        .slider,
+        #box5 img {
+            height: 170px;
+            width: 395px;
+            position: relative;
+        }
+
+        .slider ul {
+            padding: 0;
+        }
+
+        .slider li {
+            position: absolute;
+            display: none;
+        }
+
+        .slider li:first-child {
+            display: block;
+        }
+
+
+        .arrow {
+            display: none;
+        }
+
+        .slider:hover .arrow {
+            display: block;
+        }
+
+        .arrow-left,
+        .arrow-right {
+            width: 15px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .arrow-left:hover,
+        .arrow-right:hover {
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        .arrow-left {
+            left: 0;
+        }
+
+        .arrow-right {
+            right: 0;
+        }
+
+        #move2{
+            width: 200px;
+            height: 200px;
+            background-color: slateblue;
+            display: none;
+        }
+
+        #box6{
+            height: 250px;
+        }
+
+        #box7,#box8{
+            border: 1px solid darkblue;
+            width: 200px;
+            padding: 20px;
+        }
+
+        select {
+        width: 100px;
+        background-color: rgb(173, 173, 250);
+        height: 150px;
+        font-size: 20px;
+        border: 3px solid slateblue;
+        }
+
+        .btn-box {
+        width: 30px;
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+        margin: 12px 0;
+        }
+
+        #btn1,#btn2,#btn3,#btn4{
+            color: mediumpurple;
+            background-color: lavender;
+            border-color: rebeccapurple;
+        }
+
+        #box9{
+            border: 1px solid darkblue;
+            width: 240px;
+            padding: 20px;
+        }
+
+        #box9 textarea{
+            margin:0 10px;
+        }
+
+        #box9>ul{
+            padding: 0;
+            color: darkblue;
+            display: none;
+            margin-bottom: 0;
+        }
+
+        #box9 li{
+            border-bottom: 1px dashed darkblue;
+            margin: 5px auto;
+            width: 200px;
+        }
+
+        select:focus option:checked{
+            background-image:linear-gradient(slateblue,slateblue)
+        }
+    </style>
+</head>
+
+<body>
+    <h3>CSS操作</h3>
+    看console.log獲取樣式<br>
+    我們知道在JQuery中有隱式迭代， <br><br>
+    <u>
+        //而隱式迭代在設置的時候雖然會自動遍歷<br>
+        //但在獲取時僅會看第一個元素
+    </u>
+    <p>
+        css操作的三種用法：<br>
+        * 1.修改單個樣式的方式 > $('li').css('name','val') <br>
+        * 2.修改多個樣式的方式 > $('li').css({name:'val',name:'val'}) <br>
+        * 3.獲取樣式的方式 > $('li').css('name')
+    </p>
+    <ul id="test2" style="padding-left: 0;">
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+    </ul>
+
+    <script>
+        $(function () {
+            //單個
+            $('#test2>li')
+                .css('width', '80px')
+                .css('height', '22px')
+                .css('textAlign', 'center')
+
+            //多個
+            $('#test2>li').css({
+                color: 'darkblue',
+                float: 'left',
+                listStyle: 'none',
+                border: '1px solid black',
+                backgroundColor: 'lavender',
+                lineHeight: '22px'
+            })
+
+            //測試獲取樣式
+            $('#test2>li').eq(0).css('fontSize', '12px')
+            $('#test2>li').eq(1).css('fontSize', '16px')
+            $('#test2>li').eq(2).css('fontSize', '14px')
+            $('#test2>li').eq(3).css('fontSize', '18px')
+            console.log('li的字體大小是: ' + $('li').css('fontSize'))
+        })
+    </script>
+
+    <h3 style="margin-top: 60px;">Class操作</h3>
+    看console.log判斷是否擁有 .aa<br><br>
+    <u>
+        //.removeClass() 若不傳任何字符串則默認清空所有類
+    </u>
+    <p>
+        class操作的四種用法：<br>
+        * 1.添加一個類的方式 > $('#test').addClass('className') <br>
+        * 2.移除一個類的方式 > $('#test').removeClass('className') <br>
+        * 3.判斷有沒有這個類的方式 > $('#test').hasClass('className') <br>
+        * 4.切換類的方式 > $('#test').toggleClass('className')
+    </p>
+    <input type="button" value="添加 Class aa" id="btA">
+    <input type="button" value="移除 Class aa" id="btB">
+    <input type="button" value="判斷 Class aa" id="btC">
+    <input type="button" value="清空 Class" id="btD">
+    <input type="button" value="切換 Class cc" id="btE">
+    <div id="test" class="aa bb">測試測試</div>
+    <script>
+        $(function () {
+            $('#btA').click(function () {
+                $('#test').addClass('aa')
+            })
+            $('#btB').click(function () {
+                $('#test').removeClass('aa')
+            })
+            $('#btC').click(function () {
+                console.log($('#test').hasClass('aa'))
+            })
+            $('#btD').click(function () {
+                $('#test').removeClass()
+            })
+            $('#btE').click(function () {
+                $('#test').toggleClass('cc')
+            })
+        })
+    </script>
+
+    <h3>Class操作案例：tab欄切換</h3>
+    點擊li給自己添加 .active 給對應的div添加 .selected
+    <div class="wrapper">
+        <ul class="tab">
+            <li class="tab-item active">銷售冠軍<span></span></li>
+            <li class="tab-item">國際名牌<span></span></li>
+            <li class="tab-item">清潔用品<span></span></li>
+            <li class="tab-item">男士精品</li>
+        </ul>
+        <div class="products">
+            <div class="main selected">
+                <a href="###"><img src="./img/01.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="./img/02.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="./img/03.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="./img/04.jpg" alt="" /></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('.tab>li').click(function () {
+                var i = $(this).index()
+                $(this).addClass('active').siblings().removeClass('active')
+                $('.main').removeClass('selected').eq(i).addClass('selected')
+            })
+        })
+    </script>
+
+    <h3>Attr操作</h3>
+    看console.log獲取id屬性<br><br>
+    <u>
+        //attr是屬性attribute的簡寫<br>
+        //其用法跟css操作的用法完全一樣 <br>
+        //且attr可添加自定義屬性
+    </u>
+    <p>
+        attr操作的三種用法：<br>
+        * 1.修改單個屬性的方式 > $('#tag').attr('name','val') <br>
+        * 2.修改多個屬性的方式 > $('#tag').attr({name:'val',name:'val'}) <br>
+        * 3.獲取屬性的方式 > $('#tag').attr('name')
+    </p>
+    <img id="tag" src="./img/00.png" alt="tag" title="標籤">
+
+    <script>
+        $(function () {
+            $('#tag').attr('title', '我是title')
+            $('#tag').attr({
+                class: 'aa',
+                alt: 'taggg'
+            })
+            console.log('$(#tag)的id是: ' + $('#tag').attr('id'))
+        })
+    </script>
+
+    <h3>attr操作案例：圖片切換</h3>
+    把大圖片的src改成a標籤的href屬性<br>
+    把i標籤改成a標籤的title屬性<br><br>
+    <u>//取消點擊a標籤默認跳轉頁面事件 > return false</u><br><br>
+    <div id="box">
+
+        <ul id="imagegallery">
+            <li><a href="./img/1-big.jpg" title="image_A">
+                    <img src="./img/1-small.jpg" width="100" alt="image_1" />
+                </a></li>
+            <li><a href="./img/2-big.jpg" title="image_B">
+                    <img src="./img/2-small.jpg" width="100" alt="image_2" />
+                </a></li>
+            <li><a href="./img/3-big.jpg" title="image_C">
+                    <img src="./img/3-small.jpg" width="100" alt="image_3" />
+                </a></li>
+            <li><a href="./img/4-big.jpg" title="image_D">
+                    <img src="./img/4-small.jpg" width="100" alt="image_4" />
+                </a></li>
+        </ul>
+
+        <img id="image" src="./img/placeholder.png" alt="" width="450px" />
+
+        <i id="des">請選擇圖片</i>
+
+    </div>
+
+    <script>
+        $(function () {
+            $('#imagegallery a').click(function () {
+                $('#image').attr('src', $(this).attr('href'))
+                $('#des').text($(this).attr('title'))
+                return false
+            })
+        })
+    </script>
+
+    <h3>prop方法</h3>
+    對於布爾屬性的 比如說單選框勾選框等等 <br>
+    若沒有設定checked屬性 獲取到的值就會是undefined <br>
+    故不能使用attr方法 必須改用prop方法 <br>
+    其用法與attr用法一樣<br><br>
+    <u>
+        //checkbox、radio和select 返回的都是布爾值
+    </u>
+    <p>
+        * 1.使用prop()函式返回的結果: <br>
+        console.log($("#chk1").prop("checked")); // false <br>
+        console.log($("#chk2").prop("checked")); // true <br>
+        * 2.使用attr()函式返回的結果： <br>
+        console.log($("#chk1").attr("checked")); // undefined <br>
+        console.log($("#chk2").attr("checked")); // checked
+    </p>
+
+    <div id="box2">
+        <input type="button" value="checked">
+        <input type="button" value="No check">
+        <input type="checkbox" name="" id="mybox">
+    </div>
+
+    <script>
+        $(function () {
+            $('#box2>input').eq(0).click(function () {
+                $('#mybox').prop('checked', true)
+            })
+            $('#box2>input').eq(1).click(function () {
+                $('#mybox').prop('checked', false)
+            })
+        })
+    </script>
+
+    <h3>prop案例：表格全選</h3>
+    <div id="box3">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="chAll" />
+                    </th>
+                    <th>菜名</th>
+                    <th>主廚</th>
+                </tr>
+            </thead>
+            <tbody id="mytb">
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>紅燒肉</td>
+                    <td>阿基師</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>鹽焗大龍蝦</td>
+                    <td>詹姆士</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>獅子頭</td>
+                    <td>田老師</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>日式和牛</td>
+                    <td>一本道</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $('#chAll').click(function () {
+            $('#mytb input').prop('checked', $(this).prop('checked'))
+        })
+
+        $('#mytb input').click(function () {
+            if ($('#mytb input:checked').length == $('#mytb input').length) {
+                $('#chAll').prop('checked', true)
+            } else {
+                $('#chAll').prop('checked', false)
+            }
+        })
+    </script>
+
+    <h3>JQuery 動畫</h3>
+    三組基本動畫： show/hide slideDown/slideUp fadeIn/fadeOut<br>
+    若是無法滿足自己想要的需求 還有自定義動畫可以編寫<br><br>
+    <u>
+        //JQuery的用法都是大同小異的 類似的行為其操作模式都一模一樣
+    </u>
+    <p>
+        * 1.show/hide方法 不傳參數就沒有動畫 <br>
+        可以傳任意數字(單位毫秒) 或 三種字符串(fast/normal/slow) <br>
+        fast:200ms / normal:400ms / slow:600ms <br>
+        若是傳入任意的字符串則默認為normal <br>
+        另外還可以傳數字加回調函數(動畫結束後執行的函數) 如下：<br>
+        $('div').show(500,function(){ console.log('動畫結束了～') }) <br>
+        但最常用的是不傳任何參數(因為他的效果不好看) <br>
+        * 2.slideDown/slideUp方法 不傳參數默認速度normal <br>
+        若傳參數 可傳入的參數以及觸發效果則同show/hide方法一樣<br>
+        且JQuery還另外封裝了slideToggle() 可直接動畫切換顯示/隱藏<br>
+        * 3.fadeIn/fadeOut方法 同slideDown/slideUp的使用方法<br>
+        且JQuery還一樣封裝了fadeToggle() 可直接動畫切換顯示/隱藏<br>
+    </p>
+    <div id="box4">
+        <input type="button" value="show" id="show">
+        <input type="button" value="hide" id="hide"> <br><br>
+        <div id="move"></div>
+    </div>
+    <script>
+        $(function () {
+            $('#show').click(function () {
+                $('#move').show()
+                //$('#move').show(500) 放大寬+高+透明度
+                //$('#move').slideDown(500) 直線向下長出
+                //$('#move').fadeIn(500) 透明度漸增
+            })
+
+            $('#hide').click(function () {
+                $('#move').hide()
+                //$('#move').hide(500) 縮小寬+高+透明度
+                //$('#move').slideUp(500) 直線向上消失
+                //$('#move').fadeOut(500)透明度漸減
+            })
+        })
+    </script>
+
+    <h3>JQuery 動畫案例：京東輪播圖</h3>
+    點擊切換圖片(淡入淡出效果)
+    <div id="box5">
+        <div class="slider">
+            <ul>
+                <li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="./img/2.jpg" alt=""></a></li>
+                <li><a href="#"><img src="./img/3.jpg" alt=""></a></li>
+                <li><a href="#"><img src="./img/4.jpg" alt=""></a></li>
+                <li><a href="#"><img src="./img/5.jpg" alt=""></a></li>
+                <li><a href="#"><img src="./img/6.jpg" alt=""></a></li>
+                <li><a href="#"><img src="./img/7.jpg" alt=""></a></li>
+                <li><a href="#"><img src="./img/8.jpg" alt=""></a></li>
+            </ul>
+            <!--箭头-->
+            <div class="arrow">
+                <span class="arrow-left">&lt;</span>
+                <span class="arrow-right">&gt;</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            var now = 0
+            $('.arrow-right').click(function () {
+                now++
+                if (now == $('#box5 li').length) {
+                    now = 0
+                }
+                $('#box5 li').eq(now).fadeIn(500).siblings().fadeOut(500)
+            })
+            $('.arrow-left').click(function () {
+                now--
+                if (now < 0) {
+                    now = $('#box5 li').length - 1
+                }
+                $('#box5 li').eq(now).fadeIn(500).siblings().fadeOut(500 )
+            })
+            $('a').click(function(){
+                return false
+            })
+        })
+    </script>
+
+    <h3>JQuery 自定義動畫和停止動畫</h3>
+    若我們給滑鼠移入移出事件添加動畫效果 <br>
+    會發現當鼠標反覆移入移出時 會造成動畫跑不完的情況 <br>
+    其實是因為JQuery會把所有動畫存在動畫隊列中逐個執行 <br>
+    為避免跑不完的情況發生 在執行動畫前先使用stop方法停止動畫 <br>
+    <p>
+        * 1.自定義動畫animate方法 此方法有四個參數<br>
+        參數一:對象(需要的動畫樣式) 唯一必填的<br>
+        參數二:動畫執行的速度 不填默認normal(400ms)<br>
+        參數三:動畫的執行效果 swing(鞦韆)/linear(勻速) 默認是swing <br>
+        參數四:回調函數(動畫執行完畢後執行的函數) <br>
+        * 2.停止當前動畫stop方法 此方法有兩個參數 通常不傳參 <br>
+        參數一:clearQueue(清除動畫隊列) 傳入布爾值<br>
+        參數二:jumpToEnd(跳轉至目前停止動畫的最終效果) 傳入布爾值<br>
+        當stop不傳參時 默認兩個參數都是false
+    </p>
+
+    <div id="box6">
+            <input type="button" value="start" id="go">
+            <input type="button" value="stop" id="stop">
+            <br><br>
+            <div id="move2"></div>
+    </div>
+    <script>
+        $(function(){
+            $('#go').click(function(){
+            $('#move2').slideDown(2000).slideUp(2000)
+            })
+            $('#stop').click(function(){
+            $('#move2').stop(true,true)
+            })
+        })
+    </script>
+
+    <h3>JQuery 添加節點</h3>
+    <u>//append vs appendTo 用法差別(同prepend)：<br>
+        //前者是某元素添加某子元素 後者是某子元素添加到某元素
+    </u>
+    <p>
+        * 1.創建JQ對象 > 在 $() 括號裡面用字符串形式傳入要創建的東西<br>
+        * 2.添加節點append() 往後添加子元素 可傳入JQ對象或字符串 <br>
+        * 3.添加節點prepend() 使用方式同上 但這是添加在子元素的前面<br>
+        * 4.添加節點after() 使用方式同上 這是在後面添加兄弟元素<br>
+        * 5.添加節點before() 使用方式同上 這是在前面添加兄弟元素
+    </p>
+    <div id="box7"></div>
+
+    <script>
+        $(function(){
+            var $i = $('<i>我是JQ對象哀 </i>')
+            $i.css('color','darkblue')
+            $('#box7').append($i)
+            $i.before('<span>我是比否的死片</span><br>')
+            $i.after('<br><span>我是阿芙特的死片</span>')
+        })
+    </script>
+
+    <h3>添加節點案例：城市選擇器</h3>
+    <select id="src-city" name="src-city" multiple>
+        <option value="1">台北</option>
+        <option value="2">台中</option>
+        <option value="3">台南</option>
+        <option value="4">高雄</option>
+        <option value="5">金門</option>
+    </select>
+    <div class="btn-box">
+        <button id="btn1"> &gt;&gt; </button>
+        <br>
+        <br>
+        <button id="btn2"> &lt;&lt; </button>
+        <br>
+        <br>
+        <button id="btn3"> &gt;</button>
+        <br>
+        <br>
+        <button id="btn4"> &lt; </button>
+    </div>
+    <select id="tar-city" name="tar-city" multiple>
+    </select>
+
+    <script>
+        $(function(){
+            $('#btn1').click(function(){
+                $('#src-city>option').appendTo('#tar-city')
+            })
+            $('#btn2').click(function(){
+                $('#tar-city>option').appendTo('#src-city')
+            })
+            $('#btn3').click(function(){
+                $('#src-city>option:selected').appendTo('#tar-city')
+            })
+            $('#btn4').click(function(){
+                $('#tar-city>option:selected').appendTo('#src-city')
+            })
+        })
+    </script>
+
+    <h3>JQuery 刪除節點</h3>
+    <u>
+        //clone() 方法可傳參數布爾值 不傳時默認是false<br>
+        //true/false的差別在於 傳true會連其事件也一起複製<br>
+        //傳false則只複製該元素 沒有複製相對事件
+    </u>
+    <p>
+        * 1.清空方法 empty() 把所有內容兼其事件都清空<br>
+        * 2.移除節點方法 > 某元素.remove() 就是移除該元素<br>
+        * 3.複製節點方法 > 某元素.clone() 就是複製某元素<br>
+    </p>
+    <div id="box8">
+        <li id="myli">我是1,點我! </li>
+        <li>我是no.2 li</li>
+        <li>我是no.3 li</li>
+        <li>我是no.4 li</li>
+    </div>
+
+    <script>
+        $(function () {
+            $('#myli').click(function(){
+                $(this).css('backgroundColor','#ccf')
+            })
+            $('#myli').clone(true).text($('#myli').text()+'//clone').appendTo('#box8')
+        })
+    </script>
+
+    <h3>添加節點案例：微博發布</h3>
+    <u>//獲取value的方法 > $('input').val() <br>
+        //設定value的方法 > $('input').val('')
+    </u>
+    <br><br>
+    <div id="box9">
+        <i style="vertical-align:top;margin-right: 5px;">發布內容:</i>
+        <input type="text" id="text">
+        <input style="vertical-align:bottom" type="button" value="送出" id="send">
+        <ul id="myul">
+
+        </ul>
+    </div>
+
+    <script>
+        $(function(){
+            $('#send').click(function(){
+                if($('#text').val()){
+                    var $li = $('<li></li>')
+                    $li.text($('#text').val()).appendTo($('#myul'))
+                    $('#myul').show()
+                    $('#text').val('')
+                }else{
+                    return
+                }
+            })
+        })
+    </script>
+
+
+</body>
+
+</html>
